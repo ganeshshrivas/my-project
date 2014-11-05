@@ -11,13 +11,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
-
-<<<<<<< HEAD
-=======
-# Use sqlite3 as the database for Active Record
->>>>>>> c48cc4aacb23727816716a7d3bb2c3ca7f8894e9
 gem 'pg'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
