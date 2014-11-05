@@ -1,8 +1,5 @@
 class UserController < ApplicationController
 	  before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  ...
-
   # GET /users/:id.:format
   def show
     # authorize! :read, @user
@@ -62,33 +59,4 @@ class UserController < ApplicationController
       accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
       params.require(:user).permit(accessible)
     end
-end
-
-app/views/users/finish_signup.html.erb
-
-In our implementation, the form below only collects an email address from the user, but you could easily add other required fields, and even request the user specify a password at this point so they can login with an email and password later on. Note that the following template uses Bootstrap markup.
-
-<div id="add-email" class="container">
-  <h1>Add Email</h1>
-  <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
-    <% if @show_errors && current_user.errors.any? %>
-      <div id="error_explanation">
-        <% current_user.errors.full_messages.each do |msg| %>
-          <%= msg %><br>
-        <% end %>
-      </div>
-    <% end %>
-    <div class="form-group">
-      <%= f.label :email %>
-      <div class="controls">
-        <%= f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'Example: email@me.com' %>
-        <p class="help-block">Please confirm your email address. No spam.</p>
-      </div>
-    </div>
-    <div class="actions">
-      <%= f.submit 'Continue', :class => 'btn btn-primary' %>
-    </div>
-  <% end %>
-</div>
-
 end
