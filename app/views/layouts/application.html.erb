@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ruby on Rails Tutorial Sample App | <%= yield(:title) %></title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <div class="navbar navbar-inverse">
+	<div class="navbar-inner">
+		<a class="brand" href="#">MySIte</a>
+		<ul class="nav">
+		<li class="active divider-vertical"><a href="#">Home</a></li>
+		<li><a href="#">About</a></li>
+		<li><%= link_to "Logout", destroy_user_session_path, method: :get, :class => 'navbar-link'  %></li>
+		<li>
+			<form class="navbar-search">
+	    <input type="text" class="search-query" placeholder="Search">
+	    </form>
+		</li>
+		<li>
+				<p class="navbar-text pull-right">
+					<% if user_signed_in? %>
+					  Logged in as <strong><%= current_user.email %></strong>.
+					  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+					<% else %>
+					  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+					  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+					<% end %>
+				</p>
+		</li>
+		</ul>
+	</div>
+ </div>
+<div class="row">
+	<div class="span2"></div>
+	<div class="span8"><%=yield %></div>
+	<div class="span2"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  <div><%= f.label :Username %><br />
+  <%= f.text_field :username %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %></div>
+
+  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+   <div><%= f.label :Country %><br />
+    <%= f.country_select :country, {priority: %w(IN US), prompt: 'Please select a country'} %></div>
+
+   <div><%= f.label :Date_of_birth %><br />
+   <%= f.date_select(:date_of_birth, :start_year => 1900, :end_year => 2030) %></div>
+
+  <div><%= f.submit "Sign up", class: "btn btn-primary btn-lg" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
